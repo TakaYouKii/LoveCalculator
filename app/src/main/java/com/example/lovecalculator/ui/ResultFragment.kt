@@ -1,4 +1,4 @@
-package com.example.lovecalculator
+package com.example.lovecalculator.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.lovecalculator.databinding.FragmentResultBinding
+import com.example.lovecalculator.model.LoveModel
 
 @Suppress("DEPRECATION")
 class ResultFragment : Fragment() {
