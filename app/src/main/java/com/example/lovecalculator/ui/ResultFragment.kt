@@ -24,13 +24,16 @@ class ResultFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupUI()
+    }
 
+    private fun setupUI() {
         loveModel = this.arguments?.getSerializable("love") as LoveModel
         binding.tvFirstName.text = loveModel.firstName
         binding.tvSecondName.text = loveModel.secondName
         binding.tvPercentage.text = loveModel.percentage + "%"
         binding.tvResult.text = loveModel.result
-
     }
+
 
 }
