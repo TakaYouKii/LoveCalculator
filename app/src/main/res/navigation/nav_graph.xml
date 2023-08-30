@@ -17,4 +17,9 @@
         android:label="fragment_result"
         tools:layout="@layout/fragment_result">
     </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.lovecalculator.ui.history.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
 </navigation>
