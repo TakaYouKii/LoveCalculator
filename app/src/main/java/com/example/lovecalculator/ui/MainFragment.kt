@@ -19,22 +19,27 @@ import com.example.lovecalculator.model.RetrofitService
 import com.example.lovecalculator.presenter.MainFragmentPresenter
 import com.example.lovecalculator.ui.history.HistoryFragment
 import com.example.lovecalculator.view.MainView
+import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainFragment : Fragment(), MainView{
 
     lateinit var binding: FragmentMainBinding
-    private lateinit var presenter: MainFragmentPresenter
+
+    @Inject
+    lateinit var presenter: MainFragmentPresenter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        presenter = MainFragmentPresenter(this)
         binding = FragmentMainBinding.inflate(layoutInflater)
+        presenter.attachView(this)
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

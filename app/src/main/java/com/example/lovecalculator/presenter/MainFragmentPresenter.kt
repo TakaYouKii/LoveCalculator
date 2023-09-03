@@ -14,10 +14,12 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import javax.inject.Inject
 
-class MainFragmentPresenter(val mainView: MainView) {
+class MainFragmentPresenter @Inject constructor(private val api: LoveApi) {
 
-    var api =  RetrofitService().api
+    lateinit var mainView: MainView
+
     fun getLoveResult(firstName: String, secondName: String){
         api.calculateMatching(
             firstName,
@@ -46,5 +48,9 @@ class MainFragmentPresenter(val mainView: MainView) {
         val date = currentDateTime.format(dateFormatter)
         val time = currentDateTime.format(timeFormatter)
         return "Date: ${date}\nTime:${time}"
+    }
+
+    fun attachView(view: MainView){
+        this.mainView = view
     }
 }

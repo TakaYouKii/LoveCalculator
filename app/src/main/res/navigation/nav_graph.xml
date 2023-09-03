@@ -22,4 +22,14 @@
         android:name="com.example.lovecalculator.ui.history.HistoryFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/navigation_on_boarding"
+        android:name="com.example.lovecalculator.ui.on_binding.OnBoardingFragment"
+        android:label="fragment_on_boarding"
+        tools:layout="@layout/fragment_on_boarding" >
+
+        <action
+            android:id="@+id/action_navigation_on_boarding_to_mainFragment2"
+            app:destination="@id/mainFragment" />
+    </fragment>
 </navigation>

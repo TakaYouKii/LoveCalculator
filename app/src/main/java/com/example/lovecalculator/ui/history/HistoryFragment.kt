@@ -10,11 +10,17 @@ import androidx.navigation.fragment.findNavController
 import com.example.lovecalculator.App
 import com.example.lovecalculator.R
 import com.example.lovecalculator.databinding.FragmentHistoryBinding
+import com.example.lovecalculator.model.room.LoveDao
 import com.example.lovecalculator.view.HistoryView
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class HistoryFragment : Fragment(), HistoryView{
     private lateinit var binding: FragmentHistoryBinding
     private val adapter = HistoryAdapter(this::onLongClick, this::onClick)
+    @Inject lateinit var loveDao: LoveDao
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,13 +39,13 @@ class HistoryFragment : Fragment(), HistoryView{
             }
         }
 
-        val data = App.appDatabase.loveDao().getAll()
+        val data = loveDao.getAll()
         adapter.addLoveItem(data)
 
     }
 
     private fun onLongClick(i: Int): Boolean {
-        val list = App.appDatabase.loveDao().getAll()
+        val list = loveDao.getAll()
         val builder = AlertDialog.Builder(this.requireContext())
         builder.setTitle(getString(R.string.delete))
         builder.setMessage(getString(R.string.delete_message) )
@@ -47,7 +53,7 @@ class HistoryFragment : Fragment(), HistoryView{
         }
         builder.setPositiveButton(getString(R.string.yes)) { _, _ ->
             val loveListItem = list[i]
-            App.appDatabase.loveDao().delete(loveListItem)
+            loveDao.delete(loveListItem)
             findNavController().navigate(R.id.historyFragment)
         }
         builder.show()
@@ -55,7 +61,7 @@ class HistoryFragment : Fragment(), HistoryView{
     }
 
     private fun onClick(i: Int) {
-        val list = App.appDatabase.loveDao().getAll()
+        val list = loveDao.getAll()
         val listOfDateTime = App.appDatabase.loveDatetimeDao().getAll()
         val builder = AlertDialog.Builder(this.requireContext())
         builder.setTitle("Date-Time")
