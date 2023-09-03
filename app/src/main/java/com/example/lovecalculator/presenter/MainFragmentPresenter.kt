@@ -3,11 +3,13 @@ package com.example.lovecalculator.presenter
 import android.os.Build
 import android.util.Log
 import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.lovecalculator.R
 import com.example.lovecalculator.model.LoveApi
 import com.example.lovecalculator.model.LoveModel
 import com.example.lovecalculator.model.RetrofitService
+import com.example.lovecalculator.model.shared_preferences.ShearedPref
 import com.example.lovecalculator.view.MainView
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,6 +21,9 @@ import javax.inject.Inject
 class MainFragmentPresenter @Inject constructor(private val api: LoveApi) {
 
     lateinit var mainView: MainView
+
+    @Inject
+    lateinit var sharedPreferences:ShearedPref
 
     fun getLoveResult(firstName: String, secondName: String){
         api.calculateMatching(
@@ -52,5 +57,11 @@ class MainFragmentPresenter @Inject constructor(private val api: LoveApi) {
 
     fun attachView(view: MainView){
         this.mainView = view
+    }
+
+    fun showOnBoarding(){
+        if(!sharedPreferences.isOnBoardingShow()){
+            mainView.navigateToOnBoardingFragment()
+        }
     }
 }

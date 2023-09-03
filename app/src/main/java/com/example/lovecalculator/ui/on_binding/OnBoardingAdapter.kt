@@ -11,9 +11,10 @@ import com.example.lovecalculator.model.OnBoarding
 class OnBoardingAdapter(private val onClick:()-> Unit): RecyclerView.Adapter<OnBoardingAdapter.OnBoardingViewHolder>(){
 
     private val data = arrayListOf<OnBoarding>(
-        OnBoarding("Вкусная еда","У нас в заведении - вкусная еда, приготовленная с любовью и заботой.", "https://static.vecteezy.com/system/resources/thumbnails/019/607/567/small/fast-food-vector-clipart-design-graphic-clipart-design-free-png.png"),
-        OnBoarding("Бесплатная доставка", "Мы рады предложить нашим клиентам услугу бесплатной доставки.", "https://cdni.iconscout.com/illustration/premium/thumb/food-delivery-in-coronavirus-pandemic-5071253-4257131.png"),
-        OnBoarding("Удобная оплата", "У нас предоставлена легкая и удобная система оплаты для вашего удобства.", "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/3229460/easy-payment-clipart-md.png")
+        OnBoarding("Добро пожаловать в LoveCalculator!","Откройте для себя новый способ узнавать, насколько сильно вас связывает с вашей второй половинкой.", "https://new-retail.ru/upload/iblock/d57/xd5711742b0ef7d9366df4cd884c99388.jpg.pagespeed.ic.tFqhvupYpn.jpg"),
+        OnBoarding("Получите результат", "Наш алгоритм вычислит уровень вашей совместимости и подскажет, насколько вы подходите друг другу.", "https://www.meme-arsenal.com/memes/130b1529d4ba6b49c647ff17e9dc6b17.jpg"),
+        OnBoarding("Введите имена", "Введите свое имя и имя вашей возлюбленной, чтобы начать расчет вашей любви.", "https://zolotoy.ru/wp-content/uploads/2021/02/850-17.jpg"),
+        OnBoarding("Откройте для себя секреты любви", "Получите советы и рекомендации, чтобы сделать вашу любовь еще крепче и гармоничнее.", "https://www.meme-arsenal.com/memes/6c379e54d2de47b72129a1c46cf386e0.jpg")
     )
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnBoardingViewHolder {
         return OnBoardingViewHolder(OnBoardingItemsBinding.inflate(LayoutInflater.from(parent.context), parent, false))

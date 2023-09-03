@@ -45,6 +45,7 @@ class MainFragment : Fragment(), MainView{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initClicker()
+        presenter.showOnBoarding()
         binding.btnGoToHistory.setOnClickListener {
             navigateToHistoryFragment()
         }
@@ -67,6 +68,10 @@ class MainFragment : Fragment(), MainView{
 
     override fun navigateToHistoryFragment() {
         findNavController().navigate(R.id.historyFragment)
+    }
+
+    override fun navigateToOnBoardingFragment() {
+        findNavController().navigate(R.id.navigation_on_boarding)
     }
 
     override fun showError(error: String) {

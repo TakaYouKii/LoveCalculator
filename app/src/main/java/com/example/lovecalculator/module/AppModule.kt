@@ -2,15 +2,11 @@ package com.example.lovecalculator.module
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.room.Room
 import com.example.lovecalculator.model.LoveApi
-import com.example.lovecalculator.model.ShearedPref
-import com.example.lovecalculator.model.ShearedPref.Companion.PREF_NAME
 import com.example.lovecalculator.model.room.AppDatabase
 import com.example.lovecalculator.model.room.LoveDao
-import com.example.lovecalculator.presenter.MainFragmentPresenter
-import com.example.lovecalculator.view.MainView
+import com.example.lovecalculator.model.shared_preferences.ShearedPref.Companion.PREF_NAME
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,9 +35,10 @@ class AppModule {
         return appDatabase.loveDao()
     }
 
+
     @Provides
-    fun provideSharedPreferences(context: Context): ShearedPref {
-        return ShearedPref(context)
+    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
+        return context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
     }
 
 }

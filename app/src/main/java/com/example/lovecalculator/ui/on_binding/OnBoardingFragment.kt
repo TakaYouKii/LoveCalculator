@@ -6,22 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.lovecalculator.R
 import com.example.lovecalculator.databinding.FragmentOnBoardingBinding
-import com.example.lovecalculator.model.ShearedPref
+import com.example.lovecalculator.model.shared_preferences.ShearedPref
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-
+@AndroidEntryPoint
 class OnBoardingFragment : Fragment() {
 
     private  lateinit var binding: FragmentOnBoardingBinding
     private val adapter = OnBoardingAdapter(this::onClick)
 
-//    @Inject
-//    lateinit var shearedPreferences: ShearedPref
+    @Inject
+    lateinit var shearedPreferences: ShearedPref
 
-    private val shearedPreferences:ShearedPref by lazy {
-        ShearedPref(requireContext())
-    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
